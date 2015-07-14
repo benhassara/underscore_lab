@@ -55,15 +55,56 @@ var _ = {
     return shuffled;
   },
   sample: function(array, n) {
-    var i = Math.floor(Math.random() * array.length);
     if (array.length === 1) {
+      //if given array only has 1 element, only 1 to return
       return array[0];
     }
     if (n === undefined) {
+      //if n isn't given, slice out a single random element
+      var i = Math.floor(Math.random() * array.length);
       return array.slice(i, i + 1)[0];
     }
     else {
-      return array.slice(i, i + 1 + n)[0];
+      //if n is given, have to return n random selections
+      //algorithm below does it without repeating element selections
+      var wrk = array.slice(0);
+      var count = 0;
+      var out = [];
+      while (count < n && count < array.length) {
+        var i = Math.floor(Math.random() * wrk.length);
+        out.push(wrk.splice(i, 1)[0]);
+        count++;
+      }
+      return out;
     }
   },
+  difference: function(arr, comp) {
+    //return elements in arr that aren't in comp
+    var out = [];
+    for (var i = 0; i < arr.length; i++) {
+      if (!(this.contains(comp, arr[i])))
+        out.push(arr[i]);
+    }
+    return out;
+  },
+  indexOf: function(array, val) {
+    //return index of val in array
+    //if not found, return -1
+    if (this.contains(array, val)) {
+      for (var i = 0; i < array.length; i++) {
+        if (array[i] === val)
+          return i;
+      }
+    }
+    else {
+      return -1;
+    }
+  },
+  pluck: function(objarray, prop) {
+    var out = [];
+    for (var i = 0; i < objarray.length; i++) {
+      out.push(objarray[i][prop]);
+    }
+    return out;
+  }
 };

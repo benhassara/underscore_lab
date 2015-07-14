@@ -36,14 +36,14 @@ var _ = {
     return min;
   },
   shuffle: function(array) {
-    var workArray = array.slice(0);
+    //shuffle array elements, return shuffled version of the array
+    var workArray = array.slice(0); //shallow copy
     var shuffled = [];
     while (workArray.length > 0) {
       if (workArray.length === 1) {
         shuffled.push(workArray[0]);
         break;
       }
-        // shuffled.push(workArray[0]);
       else {
         var i = Math.floor(Math.random() * workArray.length);
         shuffled.push(workArray.splice(i, 1)[0]);
@@ -53,5 +53,17 @@ var _ = {
       }
     }
     return shuffled;
-  }
+  },
+  sample: function(array, n) {
+    var i = Math.floor(Math.random() * array.length);
+    if (array.length === 1) {
+      return array[0];
+    }
+    if (n === undefined) {
+      return array.slice(i, i + 1)[0];
+    }
+    else {
+      return array.slice(i, i + 1 + n)[0];
+    }
+  },
 };

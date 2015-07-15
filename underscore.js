@@ -122,5 +122,20 @@ var _ = {
       return wrk;
     }
     else return array;
+  },
+  map: function(array, func) {
+    var out = [];
+    for (var i = 0; i < array.length; i++) {
+      out.push(func(array[i]));
+    }
+    return out;
+  },
+  filter: function(array, boolTest) {
+    var out = [];
+    for (var i = 0; i < array.length; i++) {
+      if (boolTest(array[i]))
+        out.push(array[i]);
+    }
+    return out;
   }
 };

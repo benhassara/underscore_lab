@@ -111,5 +111,16 @@ var _ = {
     for (var i = 0; i < array.length; i++) {
       func(array[i]);
     }
+  },
+  compact: function(array) {
+    var wrk = array.slice(0);
+    if (this.contains(array, undefined)) {
+      while (this.contains(wrk, undefined)) {
+        var i = wrk.indexOf(undefined);
+        wrk.splice(i, 1);
+      }
+      return wrk;
+    }
+    else return array;
   }
 };

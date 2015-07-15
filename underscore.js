@@ -106,5 +106,10 @@ var _ = {
       out.push(objarray[i][prop]);
     }
     return out;
+  },
+  each: function(array, func) {
+    for (var i = 0; i < array.length; i++) {
+      func(array[i]);
+    }
   }
 };

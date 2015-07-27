@@ -71,8 +71,8 @@ var _ = {
       var count = 0;
       var out = [];
       while (count < n && count < array.length) {
-        var i = Math.floor(Math.random() * wrk.length);
-        out.push(wrk.splice(i, 1)[0]);
+        var ind = Math.floor(Math.random() * wrk.length);
+        out.push(wrk.splice(ind, 1)[0]);
         count++;
       }
       return out;
@@ -139,3 +139,28 @@ var _ = {
     return out;
   }
 };
+
+exports.max = function(array) {
+  return _.max(array);
+};
+
+exports.average = function(array) {
+  return _.average(array);
+};
+
+exports.contains = function(array, n) {
+  return _.contains(array, n);
+};
+
+exports.first = function(array) {
+  return _.first(array);
+};
+
+exports.last = function(array) {
+  return _.last(array);
+};
+
+exports.min = function(array) {
+  return _.min(array);
+};
+
